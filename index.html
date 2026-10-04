@@ -4,31 +4,46 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Google's Roboto font https://fonts.google.com/selection/embed -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
     </head>
     
     <body>
         <header>
-            <div class="flex-container">
-                    <h1 class="left">SuperText</h1>
-                    <a href="https://github.com/SKamRa/tp1-web-uqac">
-                        <img class="right" src="/images/github.png" alt="Github" width="50px" height="50px">
-                    </a>
-
+            <div class="flex-container flex-space-between w-90 margin-x-center">
+                <h1 class="left">SuperText</h1>
+                <a href="https://github.com/SKamRa/tp1-web-uqac">
+                    <img class="right" src="./images/github.png" alt="Github" width="50px" height="50px">
+                </a>
             </div>
         </header>
-        <main>            
-            <div class="flex-container w-100">
-                <div class="left">
-                    <img class="left" src="/images/loginpage.jpg" alt="Login Image" width="700px" height="700px">
-                </div>
-                <div class="right">
-                    <form action="" method="">
-                        <label for="username">Nom d'utilisateur :</label>
-                        <input type="text" id="username" name="username" required><br><br>
-                        <label for="password">Mot de passe :</label>
-                        <input type="password" id="password" name="password" required><br><br>
-                        <input type="submit" value="Se connecter">
-                    </form>
+        <main>
+            <div class="flex-container-x-center margin-top-hero-landing-page">
+                <div class="flex-container flex-space-evenly w-90">
+                    <div class="w-60 flex-container-x-center">
+                        <img class="left" src="./images/loginpage.jpg" alt="Login Image" width="700px" height="700px">
+                    </div>
+                    <div class="w-40 flex-container-x-center flex-direction-column">
+                        <div>
+                            <h1>Accès messagerie</h1>
+                            <p>
+                                Connectez-vous pour accéder à la messagerie. Vous pourrez retrouver vos dernières conversations ainsi qu'en démarrer de nouvelles !
+                            </p>
+                        </div>
+                        <form action="" method="">
+                            <label for="username">Nom d'utilisateur :</label>
+                            <input type="text" id="username" name="username" required><br><br>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="password" required><br><br>
+                            <input type="submit" value="Se connecter">
+                        </form>
+                        <div>
+    
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

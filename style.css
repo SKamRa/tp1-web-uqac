@@ -1,9 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto Flex", sans-serif;
     background-color: hsla(33.33,17.65%,90%,1);
 }
+
 .center {
     text-align: center;
     vertical-align: middle;
@@ -12,19 +13,39 @@ body {
     right: 0;
     left: 0;
 }
+
 .left {
     text-align: left;
     margin-left: 10px;
 }
+
 .right {
     text-align: right;
     margin-right: 10px;
 }
+
 .flex-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
+
+.flex-container-x-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-evenly {
+    justify-content: space-evenly;
+}
+
 .bottom {
     position: fixed;
     bottom: 0;
@@ -32,12 +53,58 @@ body {
     text-align: center;
     padding: 10px;
 }
+
 .no-decoration {
     list-style-type: none;
     background: none;
 }
 
+.margin-top-hero-landing-page {
+    margin-top: 40px;
+}
+
+.margin-x-center {
+    margin: auto;
+}
+
 .w-100 {
+    width: 100vw;
+}
+
+.h-100 {
+    height: 100vh;
+}
+
+.w-90 {
     width: 90vw;
+}
+
+.h-90 {
     height: 90vh;
 }
+
+.w-80 {
+    width: 80vw;
+}
+
+.h-80 {
+    height: 80vh;
+}
+
+.w-60 {
+    width: 60vw;
+}
+
+.h-60 {
+    height: 60vh;
+}
+
+.w-40 {
+    width: 40vw;
+}
+
+.h-40 {
+    height: 40vh;
+}
+
+
