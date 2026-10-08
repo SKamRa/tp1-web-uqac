@@ -37,8 +37,15 @@
                             <label for="username">Nom d'utilisateur :</label>
                             <input type="text" id="username" name="username" required><br><br>
                             <label for="password">Mot de passe :</label>
-                            <input type="password" id="password" name="password" required><br><br>
-                            <input type="submit" value="Se connecter">
+                            <input type="password" id="password" name="password" required><br>                           
+                            <ul class="no-decoration">
+                                <li class="text-color-red" id="pwdLength">&#x2715; Le mot de passe doit faire plus de 12 caractères</li>
+                                <li class="text-color-red" id="pwdUpper">&#x2715; Le mot de passe doit contenir au moins une lettre majuscule</li>
+                                <li class="text-color-red" id="pwdLower">&#x2715; Le mot de passe doit contenir au moins une lettre minuscule</li>
+                                <li class="text-color-red" id="pwdDigit">&#x2715; Le mot de passe doit contenir au moins un chiffre</li>
+                                <li class="text-color-red" id="pwdSpecial">&#x2715; Le mot de passe doit contenir au moins un caractère spécial</li>
+                            </ul><br><br>
+                            <input type="submit" value="Se connecter" disabled>
                         </form>
                         <div>
     
@@ -55,5 +62,64 @@
                 </ul>
             </div>
         </footer>
+
+        <script>
+            document.getElementById("password").addEventListener("input",validatePassword);
+            function validatePassword() {
+                const upperLetters = /[A-Z]/;
+                const lowerLetters = /[a-z]/;
+                const numbers = /\d/;
+                const symbols = /\W/;
+                var count = 0;
+                //&#x2705;
+                var password = document.getElementById("password").value;
+                if (password.length >= 12){
+                    document.getElementById("pwdLength").classList.replace("text-color-red","text-color-green");
+                    document.getElementById("pwdLength").innerHTML = "&#x2713; Le mot de passe doit faire plus de 12 caractères";
+                }
+                else{
+                    document.getElementById("pwdLength").classList.replace("text-color-green","text-color-red");
+                    document.getElementById("pwdLength").innerHTML = "&#x2715; Le mot de passe doit faire plus de 12 caractères";
+                }
+                if (upperLetters.test(password)){
+                    document.getElementById("pwdUpper").classList.replace("text-color-red","text-color-green");
+                    document.getElementById("pwdUpper").innerHTML = "&#x2713; Le mot de passe doit contenir au moins une lettre majuscule";
+                }
+                else{
+                    document.getElementById("pwdUpper").classList.replace("text-color-green","text-color-red");
+                    document.getElementById("pwdUpper").innerHTML = "&#x2715; Le mot de passe doit contenir au moins une lettre majuscule";
+                }
+                if (lowerLetters.test(password)){
+                    document.getElementById("pwdLower").classList.replace("text-color-red","text-color-green");
+                    document.getElementById("pwdLower").innerHTML = "&#x2713; Le mot de passe doit contenir au moins une lettre minuscule";
+                } 
+                else{
+                    document.getElementById("pwdLower").classList.replace("text-color-green","text-color-red");
+                    document.getElementById("pwdLower").innerHTML = "&#x2715; Le mot de passe doit contenir au moins une lettre minuscule";
+                }
+                if (numbers.test(password)){
+                    document.getElementById("pwdDigit").classList.replace("text-color-red","text-color-green");
+                    document.getElementById("pwdDigit").innerHTML = "&#x2713; Le mot de passe doit contenir au moins un chiffre";
+                } 
+                else{
+                    document.getElementById("pwdDigit").classList.replace("text-color-green","text-color-red");
+                    document.getElementById("pwdDigit").innerHTML = "&#x2715; Le mot de passe doit contenir au moins un chiffre";
+                }
+                if (symbols.test(password)){
+                    document.getElementById("pwdSpecial").classList.replace("text-color-red","text-color-green");
+                    document.getElementById("pwdSpecial").innerHTML = "&#x2713; Le mot de passe doit contenir au moins un caractère spécial";
+                }
+                else{
+                    document.getElementById("pwdSpecial").classList.replace("text-color-green","text-color-red");
+                    document.getElementById("pwdSpecial").innerHTML = "&#x2715; Le mot de passe doit contenir au moins un caractère spécial";
+                }
+                if (password.length >= 12 && upperLetters.test(password) && lowerLetters.test(password) && numbers.test(password) && symbols.test(password)){
+                    document.querySelector("input[type='submit']").disabled = false;
+                }
+                else{
+                    document.querySelector("input[type='submit']").disabled = true;
+                }
+            }
+        </script>
     </body>
 </html>

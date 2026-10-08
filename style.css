@@ -67,6 +67,18 @@ body {
     margin: auto;
 }
 
+.background-color-default {
+    background-color: hsla(33.33,17.65%,90%,1);
+}
+
+.text-color-red {
+    color: red;
+}
+
+.text-color-green {
+    color: green;
+}
+
 .w-100 {
     width: 100vw;
 }
