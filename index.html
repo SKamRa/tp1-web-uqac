@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
         <!-- Google's Roboto font https://fonts.google.com/selection/embed -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,8 +35,8 @@
                             </p>
                         </div>
                         <form action="" method="">
-                            <label for="username">Nom d'utilisateur :</label>
-                            <input type="text" id="username" name="username" required><br><br>
+                            <label for="email">Adresse email :</label>
+                            <input type="email" id="email" name="email" required><br><br>
                             <label for="password">Mot de passe :</label>
                             <input type="password" id="password" name="password" required><br>                           
                             <ul class="no-decoration">
@@ -45,10 +46,11 @@
                                 <li class="text-color-red" id="pwdDigit">&#x2715; Le mot de passe doit contenir au moins un chiffre</li>
                                 <li class="text-color-red" id="pwdSpecial">&#x2715; Le mot de passe doit contenir au moins un caractère spécial</li>
                             </ul><br><br>
-                            <input type="submit" value="Se connecter" disabled>
+                            <button id="signin" type="button">Se connecter</button>
+                            <button id="signup" type="button" disabled>S'inscrire</button>
                         </form>
                         <div>
-    
+                            <p id="test"></p>
                         </div>
                     </div>
                 </div>
@@ -64,6 +66,35 @@
         </footer>
 
         <script>
+            const SUPABASE_URL = "https://xxtdixtgyqgtdeulffii.supabase.co";
+            const SUPABASE_KEY = "sb_publishable_7Gm9X2akpLzoNWfpBBaz0w_9a_sBvqC";
+            const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            
+            document.getElementById("signup").addEventListener("click", async function(event) {
+                event.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const {data, error} = await client.auth.signUp({email: email, password: password});
+                if (error) {
+                    alert("Erreur lors de l'inscription : " + error.message);
+                } else {
+                    alert("Inscription réussie !");
+                    window.location.href = "./messagerie.html";
+                }
+            });
+            document.getElementById("signin").addEventListener("click", async function(event) {
+                event.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const {data, error} = await client.auth.signInWithPassword({email: email, password: password});
+                if (error) {
+                    alert("Erreur lors de la connexion : " + error.message);
+                } else {
+                    alert("Connexion réussie !");
+                    window.location.href = "./messagerie.html";
+                }
+            });
+
             document.getElementById("password").addEventListener("input",validatePassword);
             function validatePassword() {
                 const upperLetters = /[A-Z]/;
@@ -114,10 +145,10 @@
                     document.getElementById("pwdSpecial").innerHTML = "&#x2715; Le mot de passe doit contenir au moins un caractère spécial";
                 }
                 if (password.length >= 12 && upperLetters.test(password) && lowerLetters.test(password) && numbers.test(password) && symbols.test(password)){
-                    document.querySelector("input[type='submit']").disabled = false;
+                    document.getElementById("signup").disabled = false;
                 }
                 else{
-                    document.querySelector("input[type='submit']").disabled = true;
+                    document.getElementById("signup").disabled = true;
                 }
             }
         </script>
