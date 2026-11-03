@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Autorisations du navigateur : rien d'autre ne peut charger de code -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://xxtdixtgyqgtdeulffii.supabase.co wss://xxtdixtgyqgtdeulffii.supabase.co;">
+  <meta name="theme-color" content="#111827">
+  <title>SuperText — Inscription</title>
+  <link rel="stylesheet" href="./static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./static/js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+  <header class="topbar">
+    <a class="brand" href="./index.html">SuperText<span>.</span></a>
+    <a class="topbar-link" href="./index.html">Déjà un compte ? Se connecter</a>
+  </header>
+
+  <main class="auth-shell signup-shell">
+    <section class="auth-aside">
+      <p class="kicker">REJOIGNEZ SUPERTEXT</p>
+      <h1>Un pseudo.<br>Et la discussion commence.</h1>
+      <p class="muted">Choisissez un pseudo unique que les autres membres pourront utiliser pour vous retrouver.</p>
+      <div class="decor-card" aria-hidden="true">
+        <div class="decor-bubble bubble-a">Bienvenue !</div>
+        <div class="decor-bubble bubble-b">À bientôt dans le chat !</div>
+        <div class="decor-dots">•••</div>
+      </div>
+    </section>
+
+    <section class="auth-card">
+      <div class="card-heading">
+        <p class="kicker">NOUVEAU COMPTE</p>
+        <h2>Créer un compte</h2>
+        <p class="muted">Tous les champs sont obligatoires.</p>
+      </div>
+      <form id="signup-form" class="form-stack">
+        <label for="signup-pseudo">Pseudo</label>
+        <input id="signup-pseudo" type="text" minlength="3" maxlength="20" autocomplete="nickname" placeholder="ex. alex_23" pattern="[A-Za-z0-9_]+" required>
+        <small class="field-hint">3 à 20 caractères : lettres, chiffres et tiret bas uniquement.</small>
+        <label for="signup-email">Adresse courriel</label>
+        <input id="signup-email" type="email" autocomplete="email" placeholder="vous@exemple.com" required>
+        <label for="signup-password">Mot de passe</label>
+        <input id="signup-password" type="password" autocomplete="new-password" minlength="12" placeholder="12 caractères minimum" required>
+        <ul class="password-rules" id="password-rules">
+          <li data-rule="length">12 caractères minimum</li>
+          <li data-rule="upper">Une lettre majuscule</li>
+          <li data-rule="lower">Une lettre minuscule</li>
+          <li data-rule="digit">Un chiffre</li>
+          <li data-rule="special">Un caractère spécial</li>
+        </ul>
+        <button class="button primary" type="submit">Créer mon compte</button>
+      </form>
+      <p id="auth-status" class="status" role="status" aria-live="polite"></p>
+      <p class="switch-auth">Déjà inscrit ? <a href="./index.html">Se connecter</a></p>
+    </section>
+  </main>
+</body>
+</html>
+
+<!-- auth integration: form posts to Supabase auth endpoint -->
