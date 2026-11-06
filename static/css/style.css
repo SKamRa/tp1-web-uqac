@@ -1,0 +1,958 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  --ink: #18212f;
+  --muted: #748093;
+  --line: #e7ebf1;
+  --surface: #ffffff;
+  --background: #f4f6fa;
+  --primary: #6558e8;
+  --primary-dark: #5145cc;
+  --soft-primary: #f0efff;
+  --success: #16865b;
+  --danger: #c33d4d;
+  --shadow: 0 22px 70px rgba(24, 33, 47, .10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--background);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* le display:flex des classes doit pas écraser l'attribut hidden */
+[hidden] {
+  display: none !important;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.topbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(22px, 5vw, 76px);
+  background: rgba(255,255,255,.88);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  color: var(--ink);
+  font: 800 25px Manrope, sans-serif;
+  letter-spacing: -1.3px;
+}
+
+.brand span {
+  color: var(--primary);
+}
+
+.topbar-note, .topbar-link {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-page {
+  background: radial-gradient(circle at 10% 10%, #eceaff 0, transparent 32%), var(--background);
+}
+
+.auth-shell {
+  width: min(1100px, calc(100% - 40px));
+  min-height: calc(100vh - 76px);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  align-items: center;
+  gap: clamp(40px, 7vw, 100px);
+  padding: 54px 0;
+}
+
+.auth-aside h1 {
+  margin: 16px 0;
+  font: 800 clamp(38px, 5vw, 60px)/1.1 Manrope, sans-serif;
+  letter-spacing: -2.8px;
+}
+
+.auth-aside > p:not(.kicker) {
+  max-width: 470px;
+  line-height: 1.8;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.decor-card {
+  position: relative;
+  width: min(410px, 100%);
+  height: 180px;
+  margin-top: 34px;
+  border: 1px solid #e6e3ff;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff, #f0efff);
+  box-shadow: 0 18px 45px rgba(101,88,232,.10);
+}
+
+.decor-bubble {
+  position: absolute;
+  padding: 14px 19px;
+  border-radius: 17px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(30,30,60,.07);
+}
+
+.bubble-a {
+  top: 30px;
+  left: 30px;
+  color: white;
+  background: var(--primary);
+  border-bottom-left-radius: 5px;
+}
+
+.bubble-b {
+  right: 25px;
+  bottom: 30px;
+  background: white;
+  border-bottom-right-radius: 5px;
+}
+
+.decor-dots {
+  position: absolute;
+  top: 90px;
+  left: 48px;
+  color: #aaa4f6;
+  letter-spacing: 4px;
+}
+
+.auth-card {
+  padding: 38px;
+  border: 1px solid rgba(231,235,241,.9);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.card-heading {
+  margin-bottom: 28px;
+}
+
+.card-heading h2, .dialog-content h2 {
+  margin: 9px 0 5px;
+  font: 800 27px Manrope, sans-serif;
+  letter-spacing: -.8px;
+}
+
+.card-heading p:last-child {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+  color: var(--ink);
+  border: 1px solid #dfe4ec;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  transition: border .15s, box-shadow .15s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(101,88,232,.12);
+}
+
+input::placeholder {
+  color: #a4adba;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  padding: 13px 18px;
+  font-weight: 700;
+  transition: .15s ease;
+}
+
+.button.primary {
+  margin-top: 12px;
+  color: #fff;
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(101,88,232,.20);
+}
+
+.button.primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.full-width, .full {
+  width: 100%;
+}
+
+.switch-auth {
+  margin: 24px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+.status {
+  min-height: 18px;
+  margin: 12px 0 0;
+  color: var(--danger);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.status.success {
+  color: var(--success);
+}
+
+.field-hint {
+  margin-top: -5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.password-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 10px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.password-rules li::before {
+  content: "○";
+  margin-right: 6px;
+}
+
+.password-rules li.valid {
+  color: var(--success);
+}
+
+.password-rules li.valid::before {
+  content: "✓";
+}
+
+.signup-shell {
+  grid-template-columns: 1fr 460px;
+}
+
+.messenger-page {
+  height: 100vh;
+  /* 100dvh : prend en compte les barres du navigateur sur cellulaire */
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app-topbar {
+  height: 68px;
+}
+
+.account-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-pseudo {
+  margin-right: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.button.small {
+  padding: 9px 12px;
+  font-size: 11px;
+}
+
+.button.subtle {
+  color: var(--primary);
+  background: var(--soft-primary);
+}
+
+.button.outline {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: white;
+}
+
+.messenger-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0,1fr);
+  width: min(1440px, calc(100% - 40px));
+  height: calc(100vh - 100px);
+  height: calc(100dvh - 100px);
+  margin: 16px auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 40px rgba(24,33,47,.06);
+}
+
+.sidebar {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background: #fff;
+}
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 22px 17px;
+}
+
+.sidebar-heading h1 {
+  margin: 5px 0 0;
+  font: 800 24px Manrope, sans-serif;
+}
+
+.icon-button {
+  width: 39px;
+  height: 39px;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  background: var(--primary);
+  font-size: 25px;
+  line-height: 1;
+}
+
+.search-box {
+  padding: 0 18px 17px;
+}
+
+.search-box input {
+  padding: 11px 13px;
+  background: #f8f9fc;
+  font-size: 12px;
+}
+
+.conversation-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 9px 12px;
+}
+
+.conversation-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 13px 11px;
+  text-align: left;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.conversation-item:hover, .conversation-item.active {
+  background: #f2f1ff;
+}
+
+.avatar {
+  display: flex;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border-radius: 50%;
+  background: #eceaff;
+  font-weight: 800;
+}
+
+.conversation-meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.conversation-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.conversation-name {
+  display: block;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conversation-preview {
+  display: block;
+  overflow: hidden;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Point qui indique si la personne est en ligne */
+.presence-dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+}
+
+.unread-badge {
+  margin-left: auto;
+  padding: 1px 7px;
+  color: white;
+  border-radius: 999px;
+  background: var(--primary);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.empty-state {
+  padding: 20px 13px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.chat-panel {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  background: #fbfcfe;
+}
+
+.chat-placeholder {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
+}
+
+.chat-placeholder h2 {
+  margin: 18px 0 4px;
+  font: 800 24px Manrope, sans-serif;
+}
+
+.chat-placeholder p {
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.placeholder-icon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  color: var(--primary);
+  border-radius: 24px;
+  background: var(--soft-primary);
+  font-size: 34px;
+}
+
+.active-chat {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 17px 24px;
+  border-bottom: 1px solid var(--line);
+  background: white;
+}
+
+.chat-header .avatar {
+  width: 44px;
+  height: 44px;
+}
+
+.chat-heading-text h2 {
+  margin: 0;
+  font: 700 15px Manrope, sans-serif;
+}
+
+.chat-heading-text p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.messages-list {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 11px;
+  overflow-y: auto;
+  padding: 24px clamp(16px, 4vw, 50px);
+}
+
+.message-row {
+  display: flex;
+  flex-direction: column;
+  max-width: min(72%, 560px);
+  align-self: flex-start;
+}
+
+.message-row.mine {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-bubble {
+  padding: 11px 14px;
+  color: #30394a;
+  border: 1px solid var(--line);
+  border-radius: 15px 15px 15px 4px;
+  background: white;
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.message-row.mine .message-bubble {
+  color: white;
+  border-color: var(--primary);
+  border-radius: 15px 15px 4px 15px;
+  background: var(--primary);
+}
+
+/* Une image partagée est affichée directement dans la bulle */
+.message-bubble.image {
+  padding: 4px;
+  overflow: hidden;
+}
+
+.message-bubble.image img {
+  display: block;
+  max-width: min(340px, 100%);
+  max-height: 320px;
+  border-radius: 12px;
+}
+
+.message-row.mine .message-bubble.image {
+  background: var(--primary);
+}
+
+/* Séparateur du jour entre les groupes de messages */
+.day-separator {
+  align-self: center;
+  margin: 8px 0;
+  padding: 4px 13px;
+  color: var(--muted);
+  border-radius: 999px;
+  background: #eef1f7;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.message-time {
+  margin: 4px 4px 0;
+  color: #9aa3b1;
+  font-size: 9px;
+}
+
+.message-time.recu {
+  color: #9aa3b1;
+}
+
+/* Le "lu" passe en gras pour se distinguer du "reçu" grisé */
+.message-time.lu {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--line);
+  background: white;
+}
+
+.composer input {
+  flex: 1;
+}
+
+.composer .button {
+  margin: 0;
+}
+
+/* Bouton pour joindre une image, discret à côté du champ texte */
+.attach-button {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--primary);
+  border: 0;
+  border-radius: 10px;
+  background: var(--soft-primary);
+  font-size: 17px;
+}
+
+.attach-button:hover {
+  background: #e4e1ff;
+}
+
+.attach-button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* Notification qui glisse dans le coin en bas à droite */
+.toast-zone {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.toast-notification {
+  padding: 13px 17px;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ink);
+  box-shadow: 0 14px 34px rgba(24,33,47,.28);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  animation: toast-entry .25s ease;
+}
+
+@keyframes toast-entry {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-dialog {
+  width: min(430px, calc(100% - 32px));
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 25px 90px rgba(0,0,0,.25);
+}
+
+.app-dialog::backdrop {
+  background: rgba(20,25,40,.45);
+  backdrop-filter: blur(3px);
+}
+
+.dialog-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.dialog-content > .muted {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: #f2f3f7;
+  font-size: 22px;
+}
+
+@media (max-width: 800px) {
+  .auth-shell, .signup-shell {
+    grid-template-columns: 1fr;
+    width: min(480px, calc(100% - 28px));
+    gap: 25px;
+    padding: 35px 0;
+  }
+
+  .auth-aside {
+    text-align: center;
+  }
+
+  .auth-aside h1 {
+    font-size: 39px;
+  }
+
+  .auth-aside > p:not(.kicker) {
+    margin-inline: auto;
+  }
+
+  .decor-card {
+    display: none;
+  }
+
+  .auth-card {
+    padding: 27px;
+  }
+
+  .messenger-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .app-topbar {
+    padding-inline: 16px;
+  }
+
+  .account-area {
+    gap: 6px;
+  }
+
+  .account-pseudo {
+    display: none;
+  }
+
+  .messenger-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(190px, 32vh) minmax(430px, 1fr);
+    width: calc(100% - 20px);
+    height: auto;
+    min-height: calc(100vh - 88px);
+    margin: 10px auto;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-heading {
+    padding: 14px 17px 10px;
+  }
+
+  .sidebar-heading h1 {
+    font-size: 20px;
+  }
+
+  .search-box {
+    padding-bottom: 9px;
+  }
+
+  .conversation-list {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 8px 8px;
+  }
+
+  .conversation-item {
+    flex: 0 0 190px;
+  }
+
+  .chat-panel {
+    min-height: 430px;
+  }
+
+  .messages-list {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar {
+    height: 62px;
+    padding-inline: 16px;
+  }
+
+  .brand {
+    font-size: 22px;
+  }
+
+  .topbar-link {
+    font-size: 10px;
+  }
+
+  .button.small {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .message-row {
+    max-width: 88%;
+  }
+
+  .composer {
+    padding: 10px;
+  }
+
+  .composer .button {
+    padding-inline: 12px;
+  }
+
+  .attach-button {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  /* l'image prend toute la largeur du message */
+  .message-bubble.image img {
+    max-width: 100%;
+    max-height: 250px;
+  }
+
+  /* 16px sinon le téléphone fait un zoom au clic sur le champ */
+  input {
+    font-size: 16px;
+  }
+
+  .dialog-content {
+    padding: 22px;
+  }
+
+  .toast-zone {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+  }
+}
+
+/* Bouton "voir plus" des messages longs */
+.expand-toggle {
+  display: block;
+  margin-top: 5px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 11px;
+  text-decoration: underline;
+  opacity: .8;
+  cursor: pointer;
+}
+
+.expand-toggle:hover {
+  opacity: 1;
+}
+
+/* Aperçu de la transcription dans le dialog */
+.transcript-preview {
+  max-height: 280px;
+  overflow: auto;
+  margin: 12px 0 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--background);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Les boutons empilés dans un dialog prennent un peu d'air entre eux */
+.dialog-content .button.full + .button.full {
+  margin-top: 8px;
+}
+
+/* responsive: stack sidebar below chat on narrow screens */
+.msg img { max-width: 100%; height: auto; }
+
+/* responsive: stack sidebar below chat on narrow screens */
+.msg img { max-width: 100%; height: auto; }
