@@ -1,156 +1,52 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Autorisations du navigateur : rien d'autre ne peut charger de code -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://xxtdixtgyqgtdeulffii.supabase.co wss://xxtdixtgyqgtdeulffii.supabase.co;">
+  <meta name="theme-color" content="#111827">
+  <title>SuperText — Connexion</title>
+  <link rel="stylesheet" href="./static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./static/js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+  <header class="topbar">
+    <a class="brand" href="./index.html">SuperText<span>.</span></a>
+    <span class="topbar-note">Messagerie privée</span>
+  </header>
 
-        <!-- Google's Roboto font https://fonts.google.com/selection/embed -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
-    </head>
-    
-    <body>
-        <header>
-            <div class="flex-container flex-space-between w-90 margin-x-center">
-                <h1 class="left">SuperText</h1>
-                <a href="https://github.com/SKamRa/tp1-web-uqac">
-                    <img class="right" src="./images/github.png" alt="Github" width="50px" height="50px">
-                </a>
-            </div>
-        </header>
-        <main>
-            <div class="flex-container-x-center margin-top-hero-landing-page">
-                <div class="flex-container flex-space-evenly w-90">
-                    <div class="w-60 flex-container-x-center">
-                        <img class="left" src="./images/loginpage.jpg" alt="Login Image" width="700px" height="700px">
-                    </div>
-                    <div class="w-40 flex-container-x-center flex-direction-column">
-                        <div>
-                            <h1>Accès messagerie</h1>
-                            <p>
-                                Connectez-vous pour accéder à la messagerie. Vous pourrez retrouver vos dernières conversations ainsi qu'en démarrer de nouvelles !
-                            </p>
-                        </div>
-                        <form action="" method="">
-                            <label for="email">Adresse email :</label>
-                            <input type="email" id="email" name="email" required><br><br>
-                            <label for="password">Mot de passe :</label>
-                            <input type="password" id="password" name="password" required><br>                           
-                            <ul class="no-decoration">
-                                <li class="text-color-red" id="pwdLength">&#x2715; Le mot de passe doit faire plus de 12 caractères</li>
-                                <li class="text-color-red" id="pwdUpper">&#x2715; Le mot de passe doit contenir au moins une lettre majuscule</li>
-                                <li class="text-color-red" id="pwdLower">&#x2715; Le mot de passe doit contenir au moins une lettre minuscule</li>
-                                <li class="text-color-red" id="pwdDigit">&#x2715; Le mot de passe doit contenir au moins un chiffre</li>
-                                <li class="text-color-red" id="pwdSpecial">&#x2715; Le mot de passe doit contenir au moins un caractère spécial</li>
-                            </ul><br><br>
-                            <button id="signin" type="button">Se connecter</button>
-                            <button id="signup" type="button" disabled>S'inscrire</button>
-                        </form>
-                        <div>
-                            <p id="test"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <div class="bottom">
-                <ul class="no-decoration">Fait avec amour par : 
-                    <li>DEROUET Nicolas</li>
-                    <li>DEVEMY Noé</li>
-                </ul>
-            </div>
-        </footer>
+  <main class="auth-shell">
+    <section class="auth-aside">
+      <p class="kicker">VOTRE ESPACE DE DISCUSSION</p>
+      <h1>Gardez le fil<br>de vos conversations.</h1>
+      <p class="muted">Connectez-vous pour retrouver vos échanges ou discuter avec une personne grâce à son pseudo.</p>
+      <div class="decor-card" aria-hidden="true">
+        <div class="decor-bubble bubble-a">Salut !</div>
+        <div class="decor-bubble bubble-b">On se parle ici !</div>
+        <div class="decor-dots">•••</div>
+      </div>
+    </section>
 
-        <script>
-            const SUPABASE_URL = "https://xxtdixtgyqgtdeulffii.supabase.co";
-            const SUPABASE_KEY = "sb_publishable_7Gm9X2akpLzoNWfpBBaz0w_9a_sBvqC";
-            const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            
-            document.getElementById("signup").addEventListener("click", async function(event) {
-                event.preventDefault();
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                const {data, error} = await client.auth.signUp({email: email, password: password});
-                if (error) {
-                    alert("Erreur lors de l'inscription : " + error.message);
-                } else {
-                    alert("Inscription réussie !");
-                    window.location.href = "./messagerie.html";
-                }
-            });
-            document.getElementById("signin").addEventListener("click", async function(event) {
-                event.preventDefault();
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                const {data, error} = await client.auth.signInWithPassword({email: email, password: password});
-                if (error) {
-                    alert("Erreur lors de la connexion : " + error.message);
-                } else {
-                    alert("Connexion réussie !");
-                    window.location.href = "./messagerie.html";
-                }
-            });
-
-            document.getElementById("password").addEventListener("input",validatePassword);
-            function validatePassword() {
-                const upperLetters = /[A-Z]/;
-                const lowerLetters = /[a-z]/;
-                const numbers = /\d/;
-                const symbols = /\W/;
-                var count = 0;
-                //&#x2705;
-                var password = document.getElementById("password").value;
-                if (password.length >= 12){
-                    document.getElementById("pwdLength").classList.replace("text-color-red","text-color-green");
-                    document.getElementById("pwdLength").innerHTML = "&#x2713; Le mot de passe doit faire plus de 12 caractères";
-                }
-                else{
-                    document.getElementById("pwdLength").classList.replace("text-color-green","text-color-red");
-                    document.getElementById("pwdLength").innerHTML = "&#x2715; Le mot de passe doit faire plus de 12 caractères";
-                }
-                if (upperLetters.test(password)){
-                    document.getElementById("pwdUpper").classList.replace("text-color-red","text-color-green");
-                    document.getElementById("pwdUpper").innerHTML = "&#x2713; Le mot de passe doit contenir au moins une lettre majuscule";
-                }
-                else{
-                    document.getElementById("pwdUpper").classList.replace("text-color-green","text-color-red");
-                    document.getElementById("pwdUpper").innerHTML = "&#x2715; Le mot de passe doit contenir au moins une lettre majuscule";
-                }
-                if (lowerLetters.test(password)){
-                    document.getElementById("pwdLower").classList.replace("text-color-red","text-color-green");
-                    document.getElementById("pwdLower").innerHTML = "&#x2713; Le mot de passe doit contenir au moins une lettre minuscule";
-                } 
-                else{
-                    document.getElementById("pwdLower").classList.replace("text-color-green","text-color-red");
-                    document.getElementById("pwdLower").innerHTML = "&#x2715; Le mot de passe doit contenir au moins une lettre minuscule";
-                }
-                if (numbers.test(password)){
-                    document.getElementById("pwdDigit").classList.replace("text-color-red","text-color-green");
-                    document.getElementById("pwdDigit").innerHTML = "&#x2713; Le mot de passe doit contenir au moins un chiffre";
-                } 
-                else{
-                    document.getElementById("pwdDigit").classList.replace("text-color-green","text-color-red");
-                    document.getElementById("pwdDigit").innerHTML = "&#x2715; Le mot de passe doit contenir au moins un chiffre";
-                }
-                if (symbols.test(password)){
-                    document.getElementById("pwdSpecial").classList.replace("text-color-red","text-color-green");
-                    document.getElementById("pwdSpecial").innerHTML = "&#x2713; Le mot de passe doit contenir au moins un caractère spécial";
-                }
-                else{
-                    document.getElementById("pwdSpecial").classList.replace("text-color-green","text-color-red");
-                    document.getElementById("pwdSpecial").innerHTML = "&#x2715; Le mot de passe doit contenir au moins un caractère spécial";
-                }
-                if (password.length >= 12 && upperLetters.test(password) && lowerLetters.test(password) && numbers.test(password) && symbols.test(password)){
-                    document.getElementById("signup").disabled = false;
-                }
-                else{
-                    document.getElementById("signup").disabled = true;
-                }
-            }
-        </script>
-    </body>
+    <section class="auth-card">
+      <div class="card-heading">
+        <p class="kicker">BON RETOUR</p>
+        <h2>Se connecter</h2>
+        <p class="muted">Utilisez votre adresse courriel et votre mot de passe.</p>
+      </div>
+      <form id="signin-form" class="form-stack">
+        <label for="signin-email">Adresse courriel</label>
+        <input id="signin-email" type="email" autocomplete="email" placeholder="vous@exemple.com" required>
+        <label for="signin-password">Mot de passe</label>
+        <input id="signin-password" type="password" autocomplete="current-password" placeholder="Votre mot de passe" required>
+        <button class="button primary" type="submit">Se connecter</button>
+      </form>
+      <p id="auth-status" class="status" role="status" aria-live="polite"></p>
+      <p class="switch-auth">Vous n'avez pas de compte ? <a href="./signup.html">Créer un compte</a></p>
+    </section>
+  </main>
+</body>
 </html>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'">

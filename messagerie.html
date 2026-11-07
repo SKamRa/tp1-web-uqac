@@ -1,170 +1,120 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Autorisations du navigateur : rien d'autre ne peut charger de code -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://xxtdixtgyqgtdeulffii.supabase.co wss://xxtdixtgyqgtdeulffii.supabase.co https://api.freetranscriptapi.com;">
+  <meta name="theme-color" content="#111827">
+  <title>SuperText — Messagerie</title>
+  <link rel="stylesheet" href="./static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./static/js/auth.js" defer></script>
+  <script src="./static/js/messagerie.js" defer></script>
+</head>
+<body class="messenger-page">
+  <header class="topbar app-topbar">
+    <a class="brand" href="./messagerie.html">SuperText<span>.</span></a>
+    <div class="account-area">
+      <span id="current-user-pseudo" class="account-pseudo">Chargement…</span>
+      <button id="edit-pseudo-button" class="button subtle small" type="button">Modifier le pseudo</button>
+      <button id="signout-button" class="button outline small" type="button">Déconnexion</button>
+    </div>
+  </header>
 
-        <!-- Google's Roboto font https://fonts.google.com/selection/embed -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
-    </head>
-    
-    <body>
-        <header>
-            <div class="flex-container flex-space-between w-90 margin-x-center">
-                <h1 class="left">SuperText</h1>
-                <a href="https://github.com/SKamRa/tp1-web-uqac">
-                    <img class="right" src="./images/github.png" alt="Github" width="50px" height="50px">
-                </a>
-            </div>
-        </header>
-        <main>
-            <div class="messenger-app-ctn">
-                <div class="contact-panel">
-                    <div class="contact-panel-border">
-                        <ul>
-                            <li>
-                                <div class="contact-card-short">
-                                    <!-- Contact card -->
-                                    <img src="images/lewiwi-cropped.png" alt="Contact profile picture">
-                                    <div class="contact-card-short-name-info">
-                                        <span class="contact-card-short-name-info-head">Wiwi Lefebvre</span>
-                                        <span class="contact-card-short-name-info-sub">hugo.clement@example.org</span>
-                                    </div>
-                                    <div>
-    
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-card-short">
-                                    <!-- Contact card -->
-                                    <img src="images/lewiwi-cropped.png" alt="Contact profile picture">
-                                    <div class="contact-card-short-name-info">
-                                        <span class="contact-card-short-name-info-head">Wiwi Lefebvre</span>
-                                        <span class="contact-card-short-name-info-sub">hugo.clement@example.org</span>
-                                    </div>
-                                    <div>
-    
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-card-short">
-                                    <!-- Contact card -->
-                                    <img src="images/lewiwi-cropped.png" alt="Contact profile picture">
-                                    <div class="contact-card-short-name-info">
-                                        <span class="contact-card-short-name-info-head">Wiwi Lefebvre</span>
-                                        <span class="contact-card-short-name-info-sub">hugo.clement@example.org</span>
-                                    </div>
-                                    <div>
-    
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contact-card-short">
-                                    <!-- Contact card -->
-                                    <img src="images/lewiwi-cropped.png" alt="Contact profile picture">
-                                    <div class="contact-card-short-name-info">
-                                        <span class="contact-card-short-name-info-head">Wiwi Lefebvre</span>
-                                        <span class="contact-card-short-name-info-sub">hugo.clement@example.org</span>
-                                    </div>
-                                    <div>
-    
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="messages-panel">
-                    <div class="message-contact-info">
-                        <img src="images/lewiwi-cropped.png" alt="Contact profile picture">
-                        <span>Wiwi Lefebvre</span>
-                    </div>
-                    <div class="messages-list-ctn">
-                        <div class="messages-list">
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message sent">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message sent">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message sent">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                            <div class="message received">
-                                <p>fbgdhjgdfjhfgksufhsbhghjbbhjxknbfhsjkl</p>
-                                <span>12PM</span>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="text" placeholder="Envoyer un message...">
-                </div>
-            </div>
-            <textarea name="" id=""></textarea>
+  <main class="messenger-layout">
+    <aside class="sidebar">
+      <div class="sidebar-heading">
+        <div>
+          <p class="kicker">ESPACE PERSONNEL</p>
+          <h1>Messages</h1>
+        </div>
+        <button id="new-conversation-button" class="icon-button" type="button" aria-label="Nouvelle conversation" title="Nouvelle conversation">＋</button>
+      </div>
+      <div class="search-box">
+        <input id="conversation-search" type="search" placeholder="Rechercher une conversation…" aria-label="Rechercher une conversation">
+      </div>
+      <div id="conversation-list" class="conversation-list">
+        <p class="empty-state">Chargement des conversations…</p>
+      </div>
+    </aside>
 
-        </main>
-        <!-- <footer>
-            <div class="bottom">
-                <ul class="no-decoration">Fait avec amour par : 
-                    <li>DEROUET Nicolas</li>
-                    <li>DEVEMY Noé</li>
-                </ul>
-            </div>
-        </footer> -->
+    <section class="chat-panel">
+      <div id="chat-placeholder" class="chat-placeholder">
+        <div class="placeholder-icon">✉</div>
+        <h2>Vos conversations</h2>
+        <p>Sélectionnez une discussion ou démarrez-en une nouvelle avec un pseudo.</p>
+        <button id="placeholder-new-button" class="button primary" type="button">Nouvelle conversation</button>
+      </div>
 
-        <script>
-            const input = document.querySelector("input");
-            const textArea = document.querySelector("textarea");
+      <div id="active-chat" class="active-chat" hidden>
+        <div class="chat-header">
+          <div class="avatar" id="chat-avatar">?</div>
+          <div class="chat-heading-text">
+            <h2 id="chat-title">Conversation</h2>
+            <p id="chat-subtitle">Discussion privée</p>
+          </div>
+        </div>
+        <div id="messages-list" class="messages-list" aria-live="polite"></div>
+        <form id="message-form" class="composer">
+          <button id="attach-button" class="attach-button" type="button" aria-label="Envoyer une image" title="Envoyer une image">📎</button>
+          <input id="attach-input" type="file" accept="image/*" hidden>
+          <input id="message-input" type="text" maxlength="4000" placeholder="Écrire un message…" autocomplete="off" aria-label="Votre message" required>
+          <button class="button primary" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-            let inputContent = input.value;
-            let transcript = "";
-            input.addEventListener("input", checkYtUrl);
-            const ytRegex = /(?:https?:\/\/)?(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/g;
+  <dialog id="new-conversation-dialog" class="app-dialog">
+    <form id="new-conversation-form" method="dialog" class="dialog-content">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fermer">×</button>
+      <p class="kicker">NOUVEL ÉCHANGE</p>
+      <h2>Nouvelle conversation</h2>
+      <p class="muted">Saisissez le pseudo exact de la personne à contacter.</p>
+      <label for="target-pseudo">Pseudo</label>
+      <input id="target-pseudo" type="text" minlength="3" maxlength="20" placeholder="Pseudo du destinataire" required>
+      <p id="new-conversation-status" class="status" role="status"></p>
+      <button class="button primary full" type="submit">Démarrer la conversation</button>
+    </form>
+  </dialog>
 
-            async function checkYtUrl(e) {
-                inputContent = input.value;
-                transcript = inputContent.match(ytRegex).map(getVideoTranscript);
-                textArea.innerHTML(transcript);  
-            }
+  <dialog id="edit-pseudo-dialog" class="app-dialog">
+    <form id="edit-pseudo-form" method="dialog" class="dialog-content">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fermer">×</button>
+      <p class="kicker">PROFIL</p>
+      <h2>Modifier mon pseudo</h2>
+      <label for="new-pseudo">Nouveau pseudo</label>
+      <input id="new-pseudo" type="text" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required>
+      <p id="edit-pseudo-status" class="status" role="status"></p>
+      <button class="button primary full" type="submit">Enregistrer</button>
+    </form>
+  </dialog>
 
-            async function getVideoTranscript(ytLink) {
-                const res = await fetch(
-                    `https://api.freetranscriptapi.com/v1/transcript?video_url=${ytLink}&lang=fr&format=text`
-                );
-                //const data = await res.json();
-                const data = res;
-                console.log("Transcript for " + data.title + " (" + ytLink + ")");
-                console.log(data.transcript);
-                return data.transcript;
-            }
-        </script>
-    </body>
+  <dialog id="youtube-dialog" class="app-dialog">
+    <form method="dialog" class="dialog-content" onsubmit="event.preventDefault()">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fermer">×</button>
+      <p class="kicker">LIEN YOUTUBE DÉTECTÉ</p>
+      <h2>Envoyer la transcription ?</h2>
+      <p class="muted">Votre message contient un lien YouTube. Envoyez seulement le lien, ou ajoutez sa transcription dans un message suivant.</p>
+      <button id="yt-send-link" class="button outline full" type="button">Envoyer seulement le lien</button>
+      <button id="yt-send-transcript" class="button primary full" type="button">Lien + transcription</button>
+      <button id="yt-cancel" class="button subtle full" type="button">Annuler</button>
+    </form>
+  </dialog>
+
+  <dialog id="transcript-dialog" class="app-dialog">
+    <form method="dialog" class="dialog-content" onsubmit="event.preventDefault()">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fermer">×</button>
+      <p class="kicker">TRANSCRIPTION</p>
+      <h2>Aperçu de la transcription</h2>
+      <pre id="transcript-preview" class="transcript-preview"></pre>
+      <button id="transcript-send" class="button primary full" type="button">Envoyer la transcription</button>
+      <button id="transcript-cancel" class="button subtle full" type="button">Annuler</button>
+    </form>
+  </dialog>
+
+  <!-- Notifications de nouveaux messages (coin en bas à droite) -->
+  <div id="toast-zone" class="toast-zone" aria-live="polite"></div>
+</body>
 </html>
