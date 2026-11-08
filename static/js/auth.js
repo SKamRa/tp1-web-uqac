@@ -175,9 +175,3 @@ document.addEventListener("DOMContentLoaded", () => {
     login().catch(console.error);
     signup().catch(console.error);
 });
-
-/* presence: mark members online/offline */
-
-// auth: validate password client-side before submit
-
-// presence: mark members online/offline via Supabase
