@@ -1055,25 +1055,3 @@ async function startMessenger() {
 document.addEventListener("DOMContentLoaded", () => {
     startMessenger().catch(console.error);
 });
-
-/* realtime: broadcast new message on send */
-
-/* load older messages from history on open */
-
-/* typing: show "user is typing..." status */
-
-/* receipts: sent / received / read states */
-
-/* image: attach and display shared image */
-
-/* only mark read when conversation panel is visible */
-
-// realtime: broadcast new message on send
-
-// history: load older messages on conversation open
-
-// typing: show "user is typing..." indicator
-
-// receipts: sent / received / read states per message
-
-// read: only mark messages read when chat panel is visible
