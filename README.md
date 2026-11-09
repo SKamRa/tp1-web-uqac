@@ -39,6 +39,21 @@ HTML, CSS et JavaScript, avec le service Supabase (authentification,
 base de données PostgreSQL et temps réel). Aucun framework, tout est
 codé dans le dossier `static/`.
 
+## Arhictecture
+
+tp1-web-uqac/
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       ├── messagerie.js
+│       └── auth.js
+├── index.html
+├── messagerie.html
+├── signup.html
+├── README.md
+├── Projet_FilRouge.pdf
+└── LICENSE
 
 ## Nouveautés
 - Messages en temps réel
