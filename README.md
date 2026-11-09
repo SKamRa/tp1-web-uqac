@@ -37,24 +37,8 @@ colonne de gauche, et la discussion ouverte s'affiche à droite.
 
 HTML, CSS et JavaScript, avec le service Supabase (authentification,
 base de données PostgreSQL et temps réel). Aucun framework, tout est
-codé « à la main » dans le dossier `static/`.
+codé dans le dossier `static/`.
 
-## Rapport de projet
-
-Le rapport detaille du projet fil rouge est disponible dans
-`Projet_FilRouge.pdf`.
-
-Le rapport contient le cahier des charges, la conception de la base
-de donnees et les captures d'ecran de l'application.
-
-Les ecrans presentent les pages de connexion, d'inscription, la liste
-des conversations et la messagerie en temps reel.
-
-## Livrables
-
-- Application Web : dossier racine (`index.html`, `signup.html`,
-  `messagerie.html`, `static/`)
-- Rapport : `Projet_FilRouge.pdf`
 
 ## Nouveautés
 - Messages en temps réel
