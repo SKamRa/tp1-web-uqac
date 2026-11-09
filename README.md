@@ -5,7 +5,7 @@ des messages texte (et des images) en temps réel avec les autres
 membres inscrits sur la plateforme.
 
 Le site est publié avec GitHub Pages :
-https://ton-pseudo.github.io/tp1-web/   ← à remplacer par ton lien
+https://skamra.github.io/tp1-web/
 
 ## Fonctionnement
 
@@ -39,11 +39,6 @@ HTML, CSS et JavaScript, avec le service Supabase (authentification,
 base de données PostgreSQL et temps réel). Aucun framework, tout est
 codé « à la main » dans le dossier `static/`.
 
-## Équipe
-
-- < Ton nom > (conception, HTML/CSS, JavaScript, intégration Supabase)
-- < Nom du coéquipier > (conception, tests, ajustements)
-
 ## Rapport de projet
 
 Le rapport detaille du projet fil rouge est disponible dans
@@ -55,31 +50,11 @@ de donnees et les captures d'ecran de l'application.
 Les ecrans presentent les pages de connexion, d'inscription, la liste
 des conversations et la messagerie en temps reel.
 
-## Checklist de rendu
-
-- [ ] Code source pousse sur le depot distant
-- [ ] Rapport Projet_FilRouge.pdf inclus
-- [ ] Pages accessibles via GitHub Pages
-
-- [ ] Identifiants de test communs a l'enseignant
-
 ## Livrables
 
 - Application Web : dossier racine (`index.html`, `signup.html`,
   `messagerie.html`, `static/`)
 - Rapport : `Projet_FilRouge.pdf`
-
-Verification des liens et des assets images avant envoi final.
-
-Derniere relecture du README et du rapport avant le rendu.
-
-Projet pret a etre rendu.
-
-## Nouveautés
-- Messages en temps réel
-- Présence en ligne/hors-ligne
-- Accusés de réception
-- Partage d'images
 
 ## Nouveautés
 - Messages en temps réel
