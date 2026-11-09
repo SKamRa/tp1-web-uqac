@@ -5,7 +5,7 @@ des messages texte (et des images) en temps réel avec les autres
 membres inscrits sur la plateforme.
 
 Le site est publié avec GitHub Pages :
-https://skamra.github.io/tp1-web/
+[https://skamra.github.io/tp1-web/](https://skamra.github.io/tp1-web-uqac/)
 
 ## Fonctionnement
 
